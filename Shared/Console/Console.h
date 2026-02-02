@@ -30,6 +30,10 @@ public:
     static void Reset();
     static void Clear();
 
+    //
+    //  ex: Console::Write("Hello");
+    //      Console::Write(5);
+    //      Console::WriteLine(12.7, ConsoleColor::Red);
     template <typename T> static void Write(const T& message);
     template <typename T> static void Write(const T& message, ConsoleColor foreColor, ConsoleColor backColor = ConsoleColor::Black);
     template <typename T> static void WriteLine(const T& message);

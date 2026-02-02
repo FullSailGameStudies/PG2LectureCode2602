@@ -42,8 +42,8 @@ int main(int argc, char* args[])
 			//  Experiment with changing the colors.
 			//  Open the Console.h file (look in Misc/Console in Solution Explorer) to see how the methods are declared.
 			//
-			Console::Write("Hello Pg2");
-			Console::WriteLine(": Day01", ConsoleColor::Cyan);
+			Console::Write("Hello Pg2: ");
+			Console::WriteLine("Day01", ConsoleColor::Cyan);
 			break;
 		}
 		case 2:
@@ -73,6 +73,9 @@ int main(int argc, char* args[])
 			//	Print the name that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetString is declared.
 			//
+			std::string name = Input::GetString("What is your name?");
+			//std::cout << "You entered " << name << "\n";
+			Console::WriteLine("You entered " + name);
 			break;
 		}
 		case 6:
@@ -87,6 +90,9 @@ int main(int argc, char* args[])
 			//	Print the age that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetInteger is declared.
 			//
+			int age = Input::GetInteger("What is your age?", 0, 150);
+			//std::cout << "Your age is " << age << "\n";
+			Console::WriteLine("Your age is " + std::to_string(age));
 			break;
 		}
 		case 7:

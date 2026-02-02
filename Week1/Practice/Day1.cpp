@@ -59,6 +59,11 @@ void Day1::PartA_1_1()
 			//Part A-1.1: move player to a predefined Target spot (get target's location, player.move)
 			// 		HINT: explore the Player.h file to see what methods could be used.
 			//
+			int numberOfSpaces = 6;
+			for (int i = 0; i < numberOfSpaces; i++)
+			{
+				player.MoveRight();
+			}
 
 
 			while (!quit)
@@ -71,7 +76,7 @@ void Day1::PartA_1_1()
 					}
 				}
 
-				engine.ClearScreen(0, 0, 0, 0xFF); 
+				engine.ClearScreen(0, 0, 0, 0xFF);
 
 				map.DrawMap2D();
 				//map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
@@ -147,6 +152,11 @@ void Day1::PartA_1_2()
 			//Part A-1.2: move player to a predefined Target spot (get target's location, player.move)
 			// 		HINT: explore the Player.h file to see what methods could be used.
 			//
+			int numberOfSpaces = 4;
+			for (int i = 0; i < numberOfSpaces; i++)
+			{
+				player.MoveDown();
+			}
 
 
 			while (!quit)
@@ -159,7 +169,7 @@ void Day1::PartA_1_2()
 					}
 				}
 
-				engine.ClearScreen(0, 0, 0, 0xFF); 
+				engine.ClearScreen(0, 0, 0, 0xFF);
 
 				map.DrawMap2D();
 				//map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
@@ -238,6 +248,12 @@ void Day1::PartA_1_3()
 			//      use the move methods of the player
 			// 		HINT: explore the Player.h file to see what methods could be used.
 			//
+			int numberOfSpaces = 6;
+			for (int i = 0; i < numberOfSpaces; i++)
+			{
+				player.MoveRight();
+				player.MoveDown();
+			}
 
 
 			while (!quit)
@@ -250,7 +266,7 @@ void Day1::PartA_1_3()
 					}
 				}
 
-				engine.ClearScreen(0, 0, 0, 0xFF); 
+				engine.ClearScreen(0, 0, 0, 0xFF);
 
 				map.DrawMap2D();
 				//map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
@@ -270,6 +286,25 @@ void Day1::PartA_1_3()
 //
 // Part A-2.2: create the DEFINITION for CreateTargets_PartA_2
 //
+std::vector<Target> Day1::CreateTargets_PartA_2(int mapSize, int colorRange)
+{
+	std::vector<Target> targets;
+
+	//
+	//????
+	//
+	for (int i = 0; i < 10; i++)
+	{
+		Target target;
+		//randomize the position
+		target.col = rand() % mapSize;
+		target.row = rand() % mapSize;
+		targets.push_back(target);
+	}
+
+
+	return targets;
+}
 
 void Day1::PartA_2()
 {
@@ -316,6 +351,7 @@ void Day1::PartA_2()
 		// Part A-2.3: Call CreateTargets_PartA_2 and store the returned vector into the "targets" variable.
 		//
 		std::vector<Target> targets;
+		targets = CreateTargets_PartA_2(10, 255);
 
 		float scale = 0.25f;
 		Player player(&engine, scale, 1, 1);
@@ -362,7 +398,7 @@ void Day1::PartA_2()
 					}
 				}
 
-				engine.ClearScreen(0, 0, 0, 0xFF); 
+				engine.ClearScreen(0, 0, 0, 0xFF);
 
 				map.DrawMap2D();
 
