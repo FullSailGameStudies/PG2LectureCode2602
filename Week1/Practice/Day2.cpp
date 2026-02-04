@@ -8,9 +8,45 @@
 // Part B-1.2: Add a method definition for GetLights
 //
 
+void Day2::GetLights(std::vector<Target>& lightGrid)
+{
+	const int numberOfColumns = 48;
+	const int numberOfRows = 48;
+	for (int row = 0; row < numberOfRows; row++)
+	{
+		for (int col = 0; col < numberOfColumns; col++)
+		{
+			Target target;
+
+			target.col = col;
+			target.row = row;
+			target.red = rand() % 256;
+			target.green = 0;// rand() % 256;
+			target.blue = rand() % 256;
+
+			lightGrid.push_back(target);
+		}
+	}
+}
+
+
+
 //
-// Part B-2.2: Add a method definition for GetLights
+// Part B-2.2: Add a method definition for DrawLights
 //
+void Day2::DrawLights(const std::vector<Target>& lights, const Map& map) const
+{
+	for (int i = 0; i < lights.size(); i++)
+	{
+		const Target& target = lights[i];
+		map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
+	}
+
+	for (auto& target : lights)
+	{
+		map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
+	}
+}
 
 //
 // Part B-3.2: Add a method definition for EraseLights
@@ -18,6 +54,8 @@
 
 void Day2::PartB_1()
 {
+	day2Name = "Day2_PG2_2602";
+
 	//Screen dimension constants
 	const int SCREEN_WIDTH = 480;
 	const int SCREEN_HEIGHT = 480;
@@ -40,6 +78,8 @@ void Day2::PartB_1()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
+
 
 		Map map(engine.Renderer(), 10);
 
@@ -92,6 +132,7 @@ void Day2::PartB_2()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
 
 		Map map(engine.Renderer(), 10);
 
@@ -112,6 +153,7 @@ void Day2::PartB_2()
 			//
 			// Part B-2.3: call DrawLights
 			//
+			DrawLights(lights, map);
 
 			//Update screen
 			engine.Present();

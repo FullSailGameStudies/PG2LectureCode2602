@@ -4,9 +4,38 @@
 #include <Console.h>
 #include <Input.h>
 
+//pass by value
+//  making a copy of the original
+
+//pass by reference
+//	makes an alias (no copy)
+void PrintMe(double& dVal)
+{
+	dVal *= 2;
+	std::cout << dVal << "\n";
+}
+
 int main(int argc, char* args[])
 {
+	double dVal = 12.5;
+	double& dRef = dVal;//points dRef to dVal
+	double dVal2 = 12.3;
+	dRef = dVal2;//copies dVal2 to dVal
+	PrintMe(dVal);
+	std::cout << dVal << "\n";
+	PrintMe(dVal2);
+
+	//rand() - 0 to 32767
+	//color ranges - 0 to 255
+	// x % num - divides x by num and returns the remainder
+	int color = rand() % 256;
+
+
 	Day2 day2;
+	day2.SetName("Steev's Code");
+	std::cout << day2.GetName() << "\n";
+	const Day2 cDay2;
+	cDay2.GetName();
 
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
