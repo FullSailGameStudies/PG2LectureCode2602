@@ -37,6 +37,8 @@ int main(int argc, char* args[])
 	const Day2 cDay2;
 	cDay2.GetName();
 
+	Day3::Required(5);
+
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
 		"1. Part A-1.0: Calling static methods",

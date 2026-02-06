@@ -5,8 +5,41 @@
 #include "Player.h"
 #include "Map.h"
 
+void Day3::Required(int num0, int num1)
+{
+	int m1 = 10;
+	std::cout << m1;
+
+}
+
+void Info(const std::vector<int>& nums)
+{
+	//size() - # of items in the vector
+	//capacity() - length of the internal array
+	//size() <= capacity()
+	std::cout << nums.size() << ": " << nums.capacity() << "\n";
+}
+
 void Day3::PartC_1()
 {
+	std::vector<int> nummies;
+	nummies.reserve(10);
+	Info(nummies);
+	for (int i = 0; i < 10; i++)
+	{
+		nummies.push_back(rand());
+		Info(nummies);
+	}
+	auto num2 = nummies;
+	std::vector<int> num3(nummies);
+	std::vector<int> num4;
+	num4.reserve(nummies.size());
+	for (auto& num : nummies)
+	{
+		num4.push_back(num);
+	}
+
+	Required(5);//n1 = 5
 	//Screen dimension constants
 	const int SCREEN_WIDTH = 480;
 	const int SCREEN_HEIGHT = 480;
@@ -88,6 +121,10 @@ void Day3::PartC_1()
 			//
 			// Part C-1.2: call the method
 			//
+			if (channel == ColorChannel::RED)
+				ShiftColor(lights, offsets);
+			else
+				ShiftColor(lights, offsets, channel);
 
 		}
 	}
@@ -128,6 +165,12 @@ void Day3::PartC_2()
 		//
 		// Part C-2.1: copy the vector
 		//
+		noGreens = lights;
+		noBlues = lights;
+		noReds = lights;
+		RemoveLights(noGreens, ColorChannel::GREEN);
+		RemoveLights(noBlues, ColorChannel::BLUE);
+		RemoveLights(noReds, ColorChannel::RED);
 
 		Map map(engine.Renderer(), 10);
 
@@ -149,12 +192,16 @@ void Day3::PartC_2()
 					switch (e.key.keysym.sym)
 					{
 					case SDLK_1://noReds
+						current = noReds;
 						break;
 					case SDLK_2://noGreens
+						current = noGreens;
 						break;
 					case SDLK_3://noBlues
+						current = noBlues;
 						break;
 					case SDLK_4://all
+						current = lights;
 						break;
 					case SDLK_5://exit
 						quit = true;

@@ -22,7 +22,7 @@ void Day2::GetLights(std::vector<Target>& lightGrid)
 			target.row = row;
 			target.red = rand() % 256;
 			target.green = 0;// rand() % 256;
-			target.blue = rand() % 256;
+			target.blue = 0;// rand() % 256;
 
 			lightGrid.push_back(target);
 		}
@@ -46,11 +46,62 @@ void Day2::DrawLights(const std::vector<Target>& lights, const Map& map) const
 	{
 		map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
 	}
+
+	for (std::vector<Target>::const_iterator iter = lights.begin(); iter != lights.end(); iter++)
+	{
+		map.DrawCell(iter->col, iter->row, iter->red, iter->green, iter->blue);
+	}
+
 }
 
 //
 // Part B-3.2: Add a method definition for EraseLights
 //
+void Day2::EraseLights(std::vector<Target>& lights) const
+{
+	//subtract from the loop variable after erasing
+	for (int i = 0; i < lights.size(); i++)
+	{
+		if (lights[i].red < 100)
+		{
+			lights.erase(lights.begin() + i);
+			--i;
+		}
+	}
+
+	////ONLY increment the loop if you don't erase
+	//
+	//for (int i = 0; i < lights.size(); )
+	//{
+	//	if (lights[i].red < 100)
+	//	{
+	//		lights.erase(lights.begin() + i);
+	//	}
+	//	else
+	//		i++;
+	//}
+
+	////reverse for loop
+	//for (int i = lights.size() - 1; i >= 0; i--)
+	//{
+	//	if (lights[i].red < 100)
+	//	{
+	//		lights.erase(lights.begin() + i);
+	//	}
+	//}
+
+	//for (std::vector<Target>::iterator iter = lights.begin(); iter != lights.end(); )
+	//{
+	//	if (iter->red < 100)
+	//	{
+	//		iter = lights.erase(iter);
+	//	}
+	//	else
+	//		iter++;
+	//}
+
+}
+
 
 void Day2::PartB_1()
 {
@@ -185,10 +236,12 @@ void Day2::PartB_3()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
 
 		//
 		// Part B-3.3: call EraseLights
 		//
+		EraseLights(lights);
 
 
 		Map map(engine.Renderer(), 10);
@@ -210,6 +263,7 @@ void Day2::PartB_3()
 			//
 			// Part B-2.3: call DrawLights
 			//
+			DrawLights(lights, map);
 
 			//Update screen
 			engine.Present();

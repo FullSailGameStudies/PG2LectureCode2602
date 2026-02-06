@@ -9,6 +9,7 @@ enum ColorChannel
 class Day3
 {
 public:
+	static void Required(int num0, int num1 = 10);
 	static void PartC_1();
 	static void PartC_2();
 
@@ -16,7 +17,7 @@ private:
 	//
 	// Part C-1.1: add a default value
 	//
-	static void ShiftColor(std::vector<Target>& lights, std::vector<int>& offsets, ColorChannel channelToShift);
+	static void ShiftColor(std::vector<Target>& lights, std::vector<int>& offsets, ColorChannel channelToShift = ColorChannel::RED);
 
 	static void MakeLights(std::vector<Target>& lights);
 	static void MakeLights(std::vector<Target>& lights, std::vector<int>& offsets, int offset = 5);
