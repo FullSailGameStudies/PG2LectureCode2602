@@ -5,9 +5,20 @@
 #include "Day6.h"
 #include <Input.h>
 
+//recursive loop
+void SomeMethod(int number=0)
+{	
+	if (number >= 200) return ;//exit condition (base case)
+	//if(number < 200)
+	{
+		std::cout << "Some Method " << number << "\n";
+		SomeMethod(number + 1);//recursive
+	}
+}
 
 int main(int argc, char* args[])
 {
+	SomeMethod();
 	srand(static_cast<unsigned int>(time(NULL)));
 
 	std::string hello = "Hello Week 2!";

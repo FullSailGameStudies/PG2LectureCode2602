@@ -17,6 +17,21 @@ const int SCREEN_WIDTH = 480;
 const int SCREEN_HEIGHT = 480;
 void Pyramid(SDL_Renderer* renderer, int size, int x, int y)
 {
+	if (x < 0 || y < 0 || (x + size) > SCREEN_WIDTH || (y + size) > SCREEN_HEIGHT)
+		return;
+
+	SDL_Rect rect{ x, y, size, size };
+	SDL_SetRenderDrawColor(renderer, rand() % 256, rand() % 256, rand() % 256, 255);
+	SDL_RenderDrawRect(renderer, &rect);
+	SDL_RenderPresent(renderer);
+
+	//recursive case
+	Pyramid(renderer, size + 2, x - 1, y - 1);
+
+	SDL_SetRenderDrawColor(renderer, 0,0,0, 255);
+	SDL_RenderDrawRect(renderer, &rect);
+	SDL_RenderPresent(renderer);
+
 }
 void Day4::RecursionExample()
 {
@@ -66,10 +81,26 @@ void Day4::RecursionExample()
 //
 // Part A-1.1
 //
+//for (int i = 0; i < 100; ++i)
+//{
+//	std::cout << (char)78 << (char)65 << ' ';
+//}
+void Bats(int i = 0)
+{
+	if(i<100) //exit condition (base case)
+	{
+		std::cout << (char)78 << (char)65 << ' ';
+		//  i++  post-increment
+		//  ++i  pre-increment
+		Bats(++i);//recursive case
+	}
+}
 void Day4::PartA_1_1()
 {
+	Bats();
 	char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
 	for (auto ch : c) std::cout << ch;
+	std::cout << "\n";
 
 }
 
@@ -79,8 +110,17 @@ void Day4::PartA_1_1()
 //
 // Part A-1.2
 //
+void ReverseWord(const std::string& word, int index = 0)
+{
+	//if (index == word.size()) return;
+	if(index < word.size())
+		ReverseWord(word, index + 1);
+	std::cout << word[index];
+}
 void Day4::PartA_1_2()
 {
+	std::string word = "Batman";
+	ReverseWord(word);
 	std::cout << "\n";
 }
 
