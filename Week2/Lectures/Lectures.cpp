@@ -58,6 +58,25 @@ int main(int argc, char* args[])
 		std::cout << "Price: " << findResult->second << "\n";
 	}
 
+	std::cout << "\n\nPG2 Cafe\n";
+	for (auto menuIter = menu.begin(); menuIter != menu.end(); menuIter++)
+	{
+		std::cout << menuIter->first << " " << menuIter->second << "\n";
+	}
+
+	std::cout << "\n\nPG2 Cafe\n";
+	for (auto& item : menu)
+	{
+		std::cout << item.first << " " << item.second << "\n";
+	}
+
+	std::cout << "\n\nPG2 Cafe\n";
+	//structured bindings
+	for (auto& [itemName, itemPrice] : menu)
+	{
+		std::cout << itemName << " " << itemPrice << "\n";
+	}
+
 
 	std::string hello = "Hello Week 2!";
 	for (auto& ch : hello)

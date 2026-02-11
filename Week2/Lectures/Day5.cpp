@@ -139,7 +139,7 @@ void Day5::PartB_2(int section)
 				tempChannel = ColorChannel::GREEN;
 
 			//try to find the channel
-			auto foundChannel = groupedColors.find(tempChannel);
+			std::map<ColorChannel, std::vector<Light>>::iterator foundChannel = groupedColors.find(tempChannel);
 			if (foundChannel == groupedColors.end()) //not found
 			{
 				//add the channel with the light
@@ -166,6 +166,19 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: Part B-2.2 loop over the std::map
 			//
+			for (auto& [channel,channelLights] : groupedColors)
+			{
+				if (channel == ColorChannel::RED)
+					std::cout << "RED: ";
+				else if (channel == ColorChannel::GREEN)
+					std::cout << "GREEN: ";
+				else
+					std::cout << "BLUE: ";
+				std::cout << channelLights.size() << "\n";
+
+				grouper.DrawLights(screenMap, channelLights, columnRange, column, row);
+
+			}
 
 
 			//Update screen
@@ -183,11 +196,22 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: Part B-3 call std::map's find method
 			//
-
-			for (auto& [channel, channelLights] : groupedColors)
+			foundBlues = groupedColors.find(ColorChannel::BLUE);
+			if (foundBlues != groupedColors.end())
 			{
-				grouper.DrawLights(screenMap, channelLights, columnRange, column, row);
+				std::cout << "Blue: " << foundBlues->second.size() << "\n";
+				grouper.DrawLights(screenMap, foundBlues->second, columnRange, column, row);
+
 			}
+			else
+			{
+				std::cout << "Blue channel not found.\n";
+			}
+
+			//for (auto& [channel, channelLights] : groupedColors)
+			//{
+			//	grouper.DrawLights(screenMap, channelLights, columnRange, column, row);
+			//}
 
 			//Update screen
 			engine.Present();
