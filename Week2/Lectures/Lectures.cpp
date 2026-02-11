@@ -21,6 +21,7 @@ int main(int argc, char* args[])
 	SomeMethod();
 	srand(static_cast<unsigned int>(time(NULL)));
 
+
 	std::string hello = "Hello Week 2!";
 	for (auto& ch : hello)
 	{
