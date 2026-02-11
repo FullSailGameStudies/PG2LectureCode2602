@@ -4,6 +4,7 @@
 #include "Day5.h"
 #include "Day6.h"
 #include <Input.h>
+#include <map>
 
 //recursive loop
 void SomeMethod(int number=0)
@@ -20,6 +21,42 @@ int main(int argc, char* args[])
 {
 	SomeMethod();
 	srand(static_cast<unsigned int>(time(NULL)));
+
+	std::map<std::string, float> menu;
+	//how to add to a map:
+	// 1) easy way. map[key] = value;
+	menu["pizza"] = 19.99f;
+	menu["pasta"] = 15.99f;
+	menu["coffee"] = 5.99f;
+	menu["water"] = 4.99f;
+	menu["water"] = 6.99f;//overwrite any existing value
+	// 2) not-easy way 
+	//    map.insert(key-valuepair);
+	std::pair<std::string, float> pair;
+	pair = std::make_pair("bagel", 4.99f);
+	menu.insert(pair);
+	//pair objects have 2 parts: first and second
+	pair.second += 2;
+	std::pair<std::map<std::string,float>::iterator,bool> menuInserted = menu.insert(pair);//does NOT overwrite
+	if (menuInserted.second == false)
+	{
+		std::cout << pair.first << " is already on the menu. Do you want to change the price?\n";
+	}
+
+	std::string itemToFind = "Dino Nuggies";
+	//find returns an iterator to the key-value pair in the map
+	std::map<std::string,float>::iterator findResult = menu.find(itemToFind);
+	//what does it return if not found? map.end()
+	if (findResult == menu.end())
+	{
+		std::cout << itemToFind << " is not on the menu. Try McDonald's\n";
+	}
+	else
+	{
+		//the first is the key
+		//the second is the value
+		std::cout << "Price: " << findResult->second << "\n";
+	}
 
 
 	std::string hello = "Hello Week 2!";
