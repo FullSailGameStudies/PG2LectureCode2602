@@ -5,6 +5,7 @@
 #include "Day9.h"
 #include "Input.h"
 #include "Student.h"
+#include <Color.h>
 
 
 int main(int argc, char* args[])
@@ -13,6 +14,11 @@ int main(int argc, char* args[])
 	//steev.SetName("Steve Austin");
 	//steev.Grade(75);
 	std::cout << steev.GetName() << ": " << steev.Grade() <<"\n";
+
+	Color clr{ 255,0,0,255 };
+	clr.r = 255;
+	clr.a = 255;
+	clr.g = clr.b = 0;
 
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)
