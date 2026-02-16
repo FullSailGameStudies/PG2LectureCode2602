@@ -140,6 +140,7 @@
     <ClCompile Include="DayCode.cpp" />
     <ClCompile Include="GameTextures.cpp" />
     <ClCompile Include="Lectures.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="nested.h" />
     <ClInclude Include="Polymorphism.h" />
     <ClInclude Include="static.h" />
+    <ClInclude Include="Student.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>

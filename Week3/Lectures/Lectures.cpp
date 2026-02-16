@@ -4,10 +4,16 @@
 #include "Day8.h"
 #include "Day9.h"
 #include "Input.h"
+#include "Student.h"
 
 
 int main(int argc, char* args[])
 {
+	Student steev("Steve Austin",75);//creating the object is calling a ctor
+	//steev.SetName("Steve Austin");
+	//steev.Grade(75);
+	std::cout << steev.GetName() << ": " << steev.Grade() <<"\n";
+
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)
     {
