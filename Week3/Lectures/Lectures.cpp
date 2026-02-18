@@ -1,31 +1,34 @@
-#include <iostream>
 #include "Console.h"
 #include "Day7.h"
 #include "Day8.h"
 #include "Day9.h"
 #include "Input.h"
+#include "Person.h"
 #include "Student.h"
 #include <Color.h>
+#include <iostream>
 
 
 int main(int argc, char* args[])
 {
-	Student steev("Steve Austin",75);//creating the object is calling a ctor
+	Person steev("Steve Austin", 75);//creating the object is calling a ctor
 	//steev.SetName("Steve Austin");
 	//steev.Grade(75);
-	std::cout << steev.GetName() << ": " << steev.Grade() <<"\n";
+	std::cout << steev.Name() << ": " << steev.Age() << "\n";
+
+	Student carl("Carl Grimes", 15, 3.0);
 
 	Color clr{ 255,0,0,255 };
 	clr.r = 255;
 	clr.a = 255;
 	clr.g = clr.b = 0;
 
-    std::string hello = "Hello Week 3!";
-    for (auto& ch : hello)
-    {
-        Console::Write(ch, (ConsoleColor)(rand() % 7 + 1));
-    }
-    std::cout << "\n";
+	std::string hello = "Hello Week 3!";
+	for (auto& ch : hello)
+	{
+		Console::Write(ch, (ConsoleColor)(rand() % 7 + 1));
+	}
+	std::cout << "\n";
 
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
