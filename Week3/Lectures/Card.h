@@ -22,6 +22,9 @@ public:
 	}
 
 private:
+	//
+	// Card HAS-A face and suit
+	// Composition of the class
 	std::string face_, suit_;
 };
 
