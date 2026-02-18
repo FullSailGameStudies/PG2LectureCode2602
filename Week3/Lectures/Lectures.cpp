@@ -7,10 +7,20 @@
 #include "Student.h"
 #include <Color.h>
 #include <iostream>
+#include <Weapon.h>
 
-
+void Counter()
+{
+	static int i = 0;
+	std::cout << i << " ";
+	i++;
+}
 int main(int argc, char* args[])
 {
+	for (int i = 0; i < 20; i++)
+	{
+		Counter();
+	}
 	Person steev("Steve Austin", 75);//creating the object is calling a ctor
 	//steev.SetName("Steve Austin");
 	//steev.Grade(75);
@@ -20,6 +30,8 @@ int main(int argc, char* args[])
 
 	Student carl("Carl Grimes", 15, 3.0);
 	carl.WhoAmI();
+
+	//Weapon wpn(100, 50);
 
 	Color clr{ 255,0,0,255 };
 	clr.r = 255;
