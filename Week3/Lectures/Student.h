@@ -11,6 +11,12 @@ public:
 	{
 
 	}
+
+	//2. add a new method with the same signature
+	//		as the base method
+	//	OPTIONAL: add the 'override' keyword
+	void WhoAmI() override;
+
 	float GPA() const { return GPA_; }
 	void GPA(float gpa)
 	{

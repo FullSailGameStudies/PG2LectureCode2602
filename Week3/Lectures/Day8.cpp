@@ -5,6 +5,7 @@
 #include "Console.h"
 #include "Input.h"
 #include <GameTextures.h>
+#include <BlackjackCard.h>
 
 
 const int SCREEN_WIDTH = 1024;
@@ -71,6 +72,8 @@ void Day8::PartB_1()
 						//
 						// TODO: Part B-1.2 Create a BlackjackCard object
 						//
+						BlackjackCard bCard("K","Hearts");
+						std::cout << "Value: " << bCard.Value() << "\n";
 
 						pos cardSize = GameTextures::CardSize(scale);
 						int x = 5;
@@ -78,7 +81,9 @@ void Day8::PartB_1()
 
 						//
 						// TODO: Part B-1.3  call GameTextures::RenderImage with the BlackjackCard object
-						//
+						//						
+						GameTextures::RenderImage(bCard.Face(), bCard.Suit(), x, y, scale);
+
 
 
 						//Update screen

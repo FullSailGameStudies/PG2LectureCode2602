@@ -16,7 +16,10 @@ int main(int argc, char* args[])
 	//steev.Grade(75);
 	std::cout << steev.Name() << ": " << steev.Age() << "\n";
 
+	steev.WhoAmI();
+
 	Student carl("Carl Grimes", 15, 3.0);
+	carl.WhoAmI();
 
 	Color clr{ 255,0,0,255 };
 	clr.r = 255;

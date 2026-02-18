@@ -8,6 +8,11 @@ public:
 	{
 	}
 
+	//1. add 'virtual' to the base method
+	//	tells the runtime that this method MIGHT be
+	//	overridden by a derived class
+	virtual void WhoAmI();
+
 	const std::string& Name() const { return name_; }
 	void Name(const std::string& name)
 	{

@@ -10,7 +10,7 @@ public:
 	}
 
 	void Print() const;
-	int Value() const;
+	virtual int Value() const;
 
 	const std::string& Face() const { return face_; }
 	void Face(const std::string& face) {
@@ -21,7 +21,7 @@ public:
 		suit_ = suit;
 	}
 
-private:
+protected:
 	//
 	// Card HAS-A face and suit
 	// Composition of the class
