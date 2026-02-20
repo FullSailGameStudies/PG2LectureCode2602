@@ -9,23 +9,39 @@
 #include <iostream>
 #include <Weapon.h>
 
-void Counter()
+
+Person* GetObject()
 {
-	static int i = 0;
-	std::cout << i << " ";
-	i++;
+	//create the Person on the heap
+	Person* peep = new Person("Bob", 12);//heap object
+	Student carl("Carl Grimes", 15, 3.0);//stack object
+	return peep;
 }
 int main(int argc, char* args[])
 {
-	for (int i = 0; i < 20; i++)
+	//for every "=new" you need a "delete"
+	Person* pHeap = GetObject();
+	delete pHeap;
+	pHeap = nullptr;
+	if(pHeap != nullptr)
 	{
-		Counter();
+		pHeap->Age();
 	}
+
+	int num = 5;
+	int& numRef = num;
+	int* pNum = &num;//& here means address-of
+	std::cout << *pNum << "\n";
+	pNum = nullptr;
+	std::cout << *pNum << "\n";
+
 	Person steev("Steve Austin", 75);//creating the object is calling a ctor
 	//steev.SetName("Steve Austin");
 	//steev.Grade(75);
 	std::cout << steev.Name() << ": " << steev.Age() << "\n";
-
+	Person* pSteev = &steev;
+	(*pSteev).Age();
+	pSteev->Age();
 	steev.WhoAmI();
 
 	Student carl("Carl Grimes", 15, 3.0);
