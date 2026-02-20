@@ -8,6 +8,7 @@
 #include <Color.h>
 #include <iostream>
 #include <Weapon.h>
+#include <Employee.h>
 
 
 Person* GetObject()
@@ -33,7 +34,7 @@ int main(int argc, char* args[])
 	int* pNum = &num;//& here means address-of
 	std::cout << *pNum << "\n";
 	pNum = nullptr;
-	std::cout << *pNum << "\n";
+	//std::cout << *pNum << "\n";
 
 	Person steev("Steve Austin", 75);//creating the object is calling a ctor
 	//steev.SetName("Steve Austin");
@@ -46,6 +47,25 @@ int main(int argc, char* args[])
 
 	Student carl("Carl Grimes", 15, 3.0);
 	carl.WhoAmI();
+
+	//point the variable to carl
+	Person* currentPerson = &carl;//UPCASTING
+	//UPCASTING is ALWAYS safe
+	currentPerson = &steev;
+	Employee serf("E1", 64, "Junior Developer");
+	currentPerson = &serf;
+	//DOWNCASTING is NOT safe
+	//Employee* eep = currentPerson;//trying to downcast
+
+	std::vector<Person*> people;
+	people.push_back(&steev);
+	people.push_back(&carl);
+	people.push_back(&serf);
+	std::cout << "\n\nRoll Call:\n";
+	for (auto& person : people)
+	{
+		person->WhoAmI();//runtime polymorphism
+	}
 
 	//Weapon wpn(100, 50);
 

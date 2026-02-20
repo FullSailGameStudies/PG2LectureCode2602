@@ -11,6 +11,6 @@ void Student::WhoAmI()
 	//	add on to the base behavior (call the base)
 	Person::WhoAmI();
 
-	std::cout << "And my GPA is " << GPA_ << "\n";
+	std::cout << "\tAnd my GPA is " << GPA_ << "\n";
 
 }

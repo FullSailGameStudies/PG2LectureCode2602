@@ -141,6 +141,7 @@
     <ClCompile Include="Day9.cpp" />
     <ClCompile Include="DayCode.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Employee.cpp" />
     <ClCompile Include="GameTextures.cpp" />
     <ClCompile Include="Lectures.cpp" />
     <ClCompile Include="Person.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Day9.h" />
     <ClInclude Include="DayCode.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Employee.h" />
     <ClInclude Include="final.h" />
     <ClInclude Include="friends.h" />
     <ClInclude Include="GameTextures.h" />
