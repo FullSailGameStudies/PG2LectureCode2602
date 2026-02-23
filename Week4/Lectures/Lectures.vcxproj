@@ -137,6 +137,7 @@
     <ClCompile Include="Day11.cpp" />
     <ClCompile Include="Lectures.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SubTexture.cpp" />
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>

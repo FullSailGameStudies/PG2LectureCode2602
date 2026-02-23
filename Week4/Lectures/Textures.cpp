@@ -8,6 +8,33 @@ bool Textures::LoadSubtextures()
 	//
 	// Part A-1
 	//
+	std::string fileName = "character_robot_sheetHD.csv";
+	std::ifstream inFile(fileName);
+	if (inFile.is_open())
+	{
+		std::getline(inFile, imageFile_);
+
+		maxWidth_ = maxHeight_ = 0;
+		char delim = '?';
+		while (!inFile.eof())
+		{
+			std::string line;
+			std::getline(inFile, line);
+
+			SubTexture tex(line, delim);
+			maxWidth_ = std::max(maxWidth_, tex.width);
+			maxHeight_ = std::max(maxHeight_, tex.height);
+
+			subTextures_.push_back(tex);
+		}
+		inFile.close();
+		return true;
+	}
+	else
+	{
+		std::cout << fileName << " could not be opened.\n";
+	}
+	inFile.close();
 
 	return false;
 }
